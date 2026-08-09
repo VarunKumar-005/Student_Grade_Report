@@ -5,8 +5,8 @@ A centralized, web-based student mark database system that helps college faculti
 ## Tech Stack
 
 - **Backend:** Python (FastAPI) — ASGI support, automatic Pydantic validation
-- **Database:** Neon (Serverless PostgreSQL) via SQLAlchemy / SQLModel
-- **Frontend:** Next.js + Tailwind CSS + shadcn/ui
+- **Database:** Neon (Serverless PostgreSQL) 
+- **Frontend:** Next.js + CSS 
 
 ---
 
