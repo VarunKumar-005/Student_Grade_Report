@@ -60,11 +60,11 @@ erDiagram
         numeric cia_co3
         numeric cia_co4
         numeric cia_co5
-        numeric ass_co1
-        numeric ass_co2
-        numeric ass_co3
-        numeric ass_co4
-        numeric ass_co5
+        numeric assess_co1
+        numeric assess_co2
+        numeric assess_co3
+        numeric assess_co4
+        numeric assess_co5
         numeric presentation
         numeric quiz
         numeric endsem_co1
