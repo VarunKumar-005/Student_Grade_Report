@@ -1,0 +1,86 @@
+erDiagram
+    USERS ||--o{ FACULTY_SUBJECT_ASSIGNMENTS : "assigned as faculty"
+    SUBJECTS ||--o{ FACULTY_SUBJECT_ASSIGNMENTS : "assigned to faculty"
+    SUBJECTS ||--o{ STUDENT_MARKS : "has marks recorded for"
+    STUDENTS ||--o{ STUDENT_MARKS : "has marks in"
+
+    USERS {
+        int id PK
+        varchar name
+        varchar email UK
+        varchar password_hash
+        varchar role "ADMIN or FACULTY"
+        datetime created_at
+        datetime updated_at
+    }
+
+    SUBJECTS {
+        int id PK
+        varchar course_code UK
+        varchar course_name
+        varchar department
+        int semester
+        datetime created_at
+        datetime updated_at
+    }
+
+    FACULTY_SUBJECT_ASSIGNMENTS {
+        int id PK
+        int faculty_id FK
+        int subject_id FK
+        varchar academic_year
+        datetime created_at
+        datetime updated_at
+    }
+
+    STUDENTS {
+        int id PK
+        varchar roll_num UK
+        varchar register_num UK
+        varchar name
+        varchar department
+        int semester
+        datetime created_at
+        datetime updated_at
+    }
+
+    STUDENT_MARKS {
+        int id PK
+        int student_id FK
+        int subject_id FK
+        int entered_by_faculty_id FK
+        numeric cia_co1
+        numeric cia_co2
+        numeric cia_co3
+        numeric cia_co4
+        numeric cia_co5
+        numeric assess_co1
+        numeric assess_co2
+        numeric assess_co3
+        numeric assess_co4
+        numeric assess_co5
+        numeric presentation
+        numeric quiz
+        numeric endsem_co1
+        numeric endsem_co2
+        numeric endsem_co3
+        numeric endsem_co4
+        numeric endsem_co5
+        numeric internal_x_co1
+        numeric internal_x_co2
+        numeric internal_x_co3
+        numeric internal_x_co4
+        numeric internal_x_co5
+        numeric endsem_y_co1
+        numeric endsem_y_co2
+        numeric endsem_y_co3
+        numeric endsem_y_co4
+        numeric endsem_y_co5
+        numeric direct_attainment_co1
+        numeric direct_attainment_co2
+        numeric direct_attainment_co3
+        numeric direct_attainment_co4
+        numeric direct_attainment_co5
+        datetime created_at
+        datetime updated_at
+    }
