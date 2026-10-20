@@ -10,6 +10,13 @@ class StudentMarks(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     student_id: int = Field(foreign_key='students.id', nullable=False, index=True)
     subject_id: int = Field(foreign_key='subjects.id', nullable=False, index=True)
+    section_id: Optional[int] = Field(
+        default=None,
+        foreign_key='sections.id',
+        nullable=True,
+        index=True,
+        description='FK -> sections.id (optional/scoped class group)',
+    )
     entered_by_faculty_id: int = Field(foreign_key='users.id', nullable=False)
 
     cia_co1: float = 0
