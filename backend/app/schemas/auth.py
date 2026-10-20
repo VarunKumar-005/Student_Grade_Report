@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, EmailStr
 
 from app.models.user import UserRole
@@ -18,3 +19,4 @@ class CurrentUser(BaseModel):
     name: str
     email: EmailStr
     role: UserRole
+    department_id: Optional[int] = None
