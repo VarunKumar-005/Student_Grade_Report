@@ -1,0 +1,44 @@
+flowchart TB
+    subgraph Clients["Client Layer"]
+        AdminUI["Admin Dashboard<br/>(Next.js + Tailwind + shadcn/ui)"]
+        FacultyUI["Faculty Dashboard<br/>(Next.js + Tailwind + shadcn/ui)"]
+    end
+
+    subgraph EdgeAuth["Auth / Middleware"]
+        AuthMW["Next.js Middleware<br/>Route Guards (ADMIN / FACULTY)"]
+        JWT["JWT / Session Auth"]
+    end
+
+    subgraph Backend["Backend Layer - FastAPI (ASGI)"]
+        API["REST API<br/>(Pydantic validation)"]
+        AuthSvc["Auth Service"]
+        UserSvc["User & Assignment Service"]
+        MarksSvc["Marks Entry Service"]
+        CalcSvc["Attainment Calculation Engine"]
+        ReportSvc["Reporting / Export Service"]
+    end
+
+    subgraph Data["Database Layer"]
+        DB[("Neon Serverless PostgreSQL<br/>via SQLModel")]
+    end
+
+    AdminUI -->|HTTPS| AuthMW
+    FacultyUI -->|HTTPS| AuthMW
+    AuthMW --> JWT
+    JWT --> API
+
+    API --> AuthSvc
+    API --> UserSvc
+    API --> MarksSvc
+    API --> ReportSvc
+
+    MarksSvc --> CalcSvc
+    AuthSvc --> DB
+    UserSvc --> DB
+    MarksSvc --> DB
+    CalcSvc --> DB
+    ReportSvc --> DB
+
+    DB -->|aggregated attainment| ReportSvc
+    ReportSvc -->|exports + dashboards| AdminUI
+    ReportSvc -->|subject reports| FacultyUI
